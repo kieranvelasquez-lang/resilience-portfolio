@@ -643,10 +643,12 @@
     /* ── Mobile ────────────────────────────────────────────────── */
     @media (max-width: 640px) {
       .nav-inner { padding: 0 16px; }
+      .nav-inner::after { left: 16px; right: 16px; }
       .nav-label { display: none; }
       .nav-ext { font-size: 13px; }
 
-      .hero { padding: 40px 16px 48px; }
+      .hero { padding: 40px 16px 0; }
+      .hero::after { padding-top: 40px; }
 
       .hero-pills { gap: 8px; }
       .hero-pill { padding: 14px 16px; min-width: 72px; }
@@ -985,7 +987,7 @@
         + '<div class="card-back">'
         + '<div class="card-back-header">'
         + '<span class="card-back-name">' + company.name + '</span>'
-        + '<span class="card-back-hint">Tap to flip ↩</span>'
+        + '<span class="card-back-hint">Tap to flip</span>'
         + '</div>'
         + '<div class="card-back-scroll">'
         + '<p class="back-tagline">' + company.tagline + '</p>'

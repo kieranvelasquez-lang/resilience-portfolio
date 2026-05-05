@@ -65,7 +65,7 @@
       justify-content: space-between;
     }
 
-    /* Project A logo — embedded PNG, mix-blend-mode removes gray canvas on white nav */
+    /* Project A logo — CSS wordmark */
     .nav-logo {
       display: flex;
       align-items: center;
@@ -74,11 +74,33 @@
     }
     .nav-logo:hover { opacity: 0.55; }
 
-    .nav-logo-img {
-      height: 36px;
-      width: auto;
-      mix-blend-mode: multiply;
-      display: block;
+    .logo-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .logo-a-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border: 1.5px solid currentColor;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 2px;
+      flex-shrink: 0;
+    }
+
+    .logo-wordmark.inverted {
+      color: #ffffff;
     }
 
     .nav-right {
@@ -105,13 +127,14 @@
 
     /* ── Hero ──────────────────────────────────────────────────── */
     .hero-wrap {
-      border-bottom: 1px solid var(--border);
+      /* border is on the inner .hero so it aligns with content */
     }
 
     .hero {
       max-width: 1400px;
       margin: 0 auto;
       padding: 64px 32px 60px;
+      border-bottom: 1px solid var(--border);
     }
 
     .hero-eyebrow {
@@ -186,7 +209,7 @@
     }
 
     /* ── Section ───────────────────────────────────────────────── */
-    .section-wrap { border-bottom: 1px solid var(--border); }
+    .section-wrap { /* border handled by section-header inside constrained container */ }
 
     .section {
       max-width: 1400px;
@@ -532,12 +555,7 @@
       gap: 12px;
     }
 
-    .footer-logo-img {
-      height: 40px;
-      width: auto;
-      display: block;
-      filter: invert(1);
-    }
+    /* footer logo uses .logo-wordmark.inverted CSS class */
 
     .footer-tagline {
       font-size: 14px;
@@ -633,7 +651,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="https://www.project-a.vc" class="nav-logo" target="_blank" rel="noopener">
-        <img src="images/ProjectA_logo.png" alt="Project A" class="nav-logo-img" />
+        <span class="logo-wordmark">Project<span class="logo-a-box">A</span></span>
       </a>
       <div class="nav-right">
         <span class="nav-label">European Resilience</span>
@@ -674,7 +692,7 @@
     <div class="footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="images/ProjectA_logo.png" alt="Project A" class="footer-logo-img" />
+          <span class="logo-wordmark inverted" style="font-size:24px;">Project<span class="logo-a-box">A</span></span>
           <span class="footer-tagline">For the next generation of European icons.</span>
         </div>
         <nav class="footer-nav">

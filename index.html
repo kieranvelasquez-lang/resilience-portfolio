@@ -49,15 +49,20 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-      padding: 0 40px;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     /* Project A logo — embedded PNG, mix-blend-mode removes gray canvas on white nav */
@@ -70,15 +75,7 @@
     .nav-logo:hover { opacity: 0.55; }
 
     .nav-logo-img {
-      height: 30px;
-      width: auto;
-      mix-blend-mode: multiply;
-      display: block;
-    }
-
-    /* Footer version slightly smaller */
-    .footer-logo-img {
-      height: 26px;
+      height: 36px;
       width: auto;
       mix-blend-mode: multiply;
       display: block;
@@ -87,7 +84,7 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
     .nav-label {
@@ -509,43 +506,105 @@
     }
 
     /* ── Footer ────────────────────────────────────────────────── */
+    .footer-wrap {
+      background: #1a1a1a;
+    }
+
     .footer {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 40px 32px;
+      padding: 56px 32px 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+      filter: invert(1);
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav-link {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .footer-nav-link:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .footer-nav-link.icon-link {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .footer-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px 24px;
+      padding-top: 24px;
     }
 
-    .footer-logo {
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-legal {
       display: flex;
       align-items: center;
-      gap: 4px;
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.01em;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .footer-copy { font-size: 12px; color: var(--text-muted); }
-
-    .footer-link {
+    .footer-legal-link {
       font-size: 12px;
-      font-weight: 500;
-      color: var(--text-mid);
+      color: rgba(255,255,255,0.3);
       transition: color 0.15s;
     }
-    .footer-link:hover { color: var(--text); }
+    .footer-legal-link:hover { color: rgba(255,255,255,0.7); }
 
     /* ── Mobile ────────────────────────────────────────────────── */
     @media (max-width: 640px) {
-      .nav { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
       .nav-label { display: none; }
-      .nav-ext { display: none; }
+      .nav-ext { font-size: 13px; }
 
       .hero { padding: 40px 16px 48px; }
 
@@ -562,7 +621,9 @@
 
       .card-back-scroll { padding: 16px 14px 20px; }
 
-      .footer { padding: 32px 16px; }
+      .footer { padding: 40px 16px 32px; }
+      .footer-top { flex-direction: column; gap: 28px; }
+      .footer-nav { gap: 6px; }
     }
   </style>
 </head>
@@ -570,12 +631,14 @@
 
   <!-- Nav -->
   <nav class="nav">
-    <a href="https://www.project-a.vc" class="nav-logo" target="_blank" rel="noopener">
-      <img src="images/ProjectA_logo.png" alt="Project A" class="nav-logo-img" />
-    </a>
-    <div class="nav-right">
-      <span class="nav-label">European Resilience</span>
-      <a href="https://www.project-a.vc" class="nav-ext" target="_blank" rel="noopener">Back to Project A ↗</a>
+    <div class="nav-inner">
+      <a href="https://www.project-a.vc" class="nav-logo" target="_blank" rel="noopener">
+        <img src="images/ProjectA_logo.png" alt="Project A" class="nav-logo-img" />
+      </a>
+      <div class="nav-right">
+        <span class="nav-label">European Resilience</span>
+        <a href="https://www.project-a.vc" class="nav-ext" target="_blank" rel="noopener">Back to Project A ↗</a>
+      </div>
     </div>
   </nav>
 
@@ -607,11 +670,27 @@
   <main id="portfolio"></main>
 
   <!-- Footer -->
-  <footer style="border-top: 1px solid var(--border);">
+  <footer class="footer-wrap">
     <div class="footer">
-      <span class="footer-logo"><img src="images/ProjectA_logo.png" alt="Project A" class="footer-logo-img" /></span>
-      <span class="footer-copy">Resilience Portfolio 2025</span>
-      <a href="https://www.project-a.vc" class="footer-link" target="_blank" rel="noopener">project-a.vc ↗</a>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/ProjectA_logo.png" alt="Project A" class="footer-logo-img" />
+          <span class="footer-tagline">For the next generation of European icons.</span>
+        </div>
+        <nav class="footer-nav">
+          <a href="https://www.project-a.vc/careers" class="footer-nav-link" target="_blank" rel="noopener">Careers</a>
+          <a href="https://accounts.quantiumportal.com/QuantiumPortal/project-a?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dquantium-portal-client%26redirect_uri%3Dhttps%253A%252F%252Fwww.quantiumportal.com%252Fproject-a%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2520offline_access%2520role%2520profile%2520email%2520portalapis%2520portalsso%26state%3De486208fc95e4a6db3f04313bda44b57%26code_challenge%3Dj51oCSzCwh-a8zxPxuQCpjrFMPXiYCAXhqITDmtMnOA%26code_challenge_method%3DS256%26response_mode%3Dquery%26companyUri%3Dproject-a" class="footer-nav-link" target="_blank" rel="noopener">Investor Portal</a>
+          <a href="https://www.project-a.vc/press" class="footer-nav-link" target="_blank" rel="noopener">Press</a>
+          <a href="https://www.linkedin.com/company/project-a-vc/" class="footer-nav-link icon-link" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">Copyright © 2026 Project A</span>
+        <div class="footer-legal">
+          <a href="https://www.project-a.vc/imprint" class="footer-legal-link" target="_blank" rel="noopener">Imprint</a>
+          <a href="https://www.project-a.vc/privacy-policy" class="footer-legal-link" target="_blank" rel="noopener">Privacy policy</a>
+        </div>
+      </div>
     </div>
   </footer>
 

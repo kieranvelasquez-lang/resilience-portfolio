@@ -52,7 +52,7 @@
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+      /* border moved to ::after on nav-inner so it aligns with content */
     }
 
     .nav-inner {
@@ -63,6 +63,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
+    }
+
+    .nav-inner::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 32px;
+      right: 32px;
+      height: 1px;
+      background: var(--border);
     }
 
     /* Project A logo — CSS wordmark */
@@ -133,7 +144,14 @@
     .hero {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 64px 32px 60px;
+      padding: 64px 32px 0;
+    }
+
+    /* border sits inside the 32px padding so it aligns with section headers */
+    .hero::after {
+      content: '';
+      display: block;
+      padding-top: 60px;
       border-bottom: 1px solid var(--border);
     }
 

@@ -2,148 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>European Resilience — Project A</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <style>
     /* ── Reset ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Project A palette — from screenshots */
-      --white:       #ffffff;
-      --bg:          #f7f9fa;     /* light section bg */
-      --card-bg:     #eff1f2;     /* card fill */
-      --border:      #e5e7e9;
-      --text:        #1a1a1a;
-      --text-mid:    #5a5a5a;
-      --text-muted:  #9a9a9a;
-      --blue:        #7fa8c9;     /* PA muted blue accent */
-      --lime:        #c8f135;     /* PA electric lime — hover & accent */
-      --lime-dark:   #a8cb10;
-      --radius:      16px;
-
+      --white:      #ffffff;
+      --bg:         #f7f9fa;
+      --card-bg:    #eff1f2;
+      --border:     #e5e7e9;
+      --text:       #1a1a1a;
+      --text-mid:   #5a5a5a;
+      --text-muted: #9a9a9a;
+      --lime:       #c8f135;
+      --radius:     16px;
       --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans:  'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans:  'DM Sans', -apple-system, sans-serif;
     }
 
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
     body {
-      background-color: var(--white);
+      background: var(--white);
       color: var(--text);
       font-family: var(--font-sans);
-      font-weight: 400;
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100vw;
     }
 
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     /* ── Nav ───────────────────────────────────────────────────── */
     .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
       height: 60px;
-      background: var(--white);
+      padding: 0 32px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
 
+    /* Project A logo — matches real PA mark: bold serif + rounded-square [A] */
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 3px;
       font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 400;
+      font-size: 18px;
+      font-weight: 700;
       color: var(--text);
+      letter-spacing: -0.01em;
       transition: opacity 0.2s;
-      text-decoration: none;
+      line-height: 1;
     }
     .nav-logo:hover { opacity: 0.55; }
 
-    /* Rounded square box around "A" — matches real PA logo */
-    .nav-logo-box {
+    /* Rounded square box — border-radius ~32% of box size matches real logo */
+    .logo-a-box {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 24px;
+      width: 30px;
+      height: 28px;
       border: 1.5px solid var(--text);
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 600;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 700;
+      font-style: italic;
       font-family: var(--font-serif);
       line-height: 1;
       flex-shrink: 0;
+      position: relative;
+      top: -1px;
+      letter-spacing: 0;
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 24px;
     }
 
     .nav-label {
       font-size: 13px;
-      font-weight: 400;
       color: var(--text-mid);
       border-bottom: 1px solid var(--text-mid);
       padding-bottom: 1px;
     }
 
-    .nav-link {
+    .nav-ext {
       font-size: 13px;
-      font-weight: 400;
-      color: var(--text-mid);
+      color: var(--text-muted);
       transition: color 0.15s;
     }
-    .nav-link:hover { color: var(--text); }
+    .nav-ext:hover { color: var(--text); }
 
     /* ── Hero ──────────────────────────────────────────────────── */
-    .hero {
-      padding: 80px 40px 72px;
+    .hero-wrap {
       border-bottom: 1px solid var(--border);
+    }
+
+    .hero {
       max-width: 1400px;
       margin: 0 auto;
+      padding: 64px 32px 60px;
     }
 
     .hero-eyebrow {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(52px, 7.5vw, 108px);
+      font-size: clamp(52px, 8vw, 112px);
       font-weight: 400;
-      line-height: 1.0;
+      line-height: 0.95;
       letter-spacing: -0.03em;
       color: var(--text);
       margin-bottom: 48px;
     }
 
-    .hero-title em {
-      font-style: italic;
-    }
+    .hero-title em { font-style: italic; }
 
     .hero-bottom {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 40px;
+      gap: 32px;
       flex-wrap: wrap;
     }
 
@@ -152,13 +160,12 @@
       font-weight: 300;
       line-height: 1.75;
       color: var(--text-mid);
-      max-width: 480px;
+      max-width: 460px;
     }
 
     .hero-pills {
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 10px;
       flex-shrink: 0;
     }
 
@@ -169,42 +176,45 @@
       gap: 4px;
       background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 20px 28px;
-      min-width: 100px;
+      padding: 18px 24px;
+      min-width: 88px;
     }
 
-    .hero-pill-number {
+    .hero-pill.accent { background: var(--lime); }
+
+    .hero-pill-n {
       font-family: var(--font-serif);
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 400;
       line-height: 1;
-      color: var(--text);
     }
 
-    .hero-pill-label {
-      font-size: 10px;
+    .hero-pill-l {
+      font-size: 9px;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
     /* ── Section ───────────────────────────────────────────────── */
+    .section-wrap { border-bottom: 1px solid var(--border); }
+
     .section {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 32px;
     }
 
     .section-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 56px 0 36px;
+      gap: 14px;
+      padding: 52px 0 32px;
       border-bottom: 1px solid var(--border);
     }
 
-    .section-number {
+    .section-num {
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.14em;
@@ -215,14 +225,13 @@
 
     .section-title {
       font-family: var(--font-serif);
-      font-size: clamp(26px, 3vw, 42px);
+      font-size: clamp(24px, 3vw, 40px);
       font-weight: 400;
       letter-spacing: -0.02em;
       line-height: 1;
-      color: var(--text);
     }
 
-    .section-count {
+    .section-ct {
       margin-left: auto;
       font-size: 11px;
       font-weight: 500;
@@ -232,125 +241,257 @@
       flex-shrink: 0;
     }
 
-    /* ── Grid ──────────────────────────────────────────────────── */
-    .companies-grid {
+    /* ── Cards grid ────────────────────────────────────────────── */
+    .cards-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      padding: 32px 0 56px;
+      padding: 28px 0 52px;
     }
 
-    /* ── Card ──────────────────────────────────────────────────── */
-    .card {
-      background: var(--card-bg);
+    @media (min-width: 768px) {
+      .cards-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1200px) {
+      .cards-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* ── Flip card ─────────────────────────────────────────────── */
+    .card-wrap {
+      perspective: 1200px;
+      height: 620px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: var(--radius);
-      padding: 40px;
+    }
+
+    .card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    /* ── Front face ────────────────────────────────────────────── */
+    .card-front,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .card-front {
+      cursor: pointer;
+      background: #1a1a1a;
+    }
+
+    .card-front-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card-front:hover .card-front-img {
+      transform: scale(1.03);
+    }
+
+    .card-front-overlay {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      border: 1.5px solid transparent;
-      transition: border-color 0.2s ease, background 0.2s ease;
-      cursor: default;
-    }
-
-    .card:hover {
-      border-color: var(--lime);
-      background: var(--white);
-    }
-
-    /* Lime accent strip shown on hover */
-    .card-name-row {
-      display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.0) 0%,
+        rgba(0,0,0,0.0) 40%,
+        rgba(0,0,0,0.65) 75%,
+        rgba(0,0,0,0.85) 100%
+      );
+      pointer-events: none;
     }
 
-    .card-name {
+    .card-front-top {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .card-industry-badge {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 5px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .card-front-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-front-name {
       font-family: var(--font-serif);
-      font-size: clamp(24px, 2.4vw, 34px);
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 400;
+      line-height: 1.05;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      color: #ffffff;
+    }
+
+    .card-front-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+
+    .card-front-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .card-front-hint svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Back face ─────────────────────────────────────────────── */
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .card-back-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .card-back-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
       color: var(--text);
     }
 
-    .card-industry {
-      font-size: 10px;
+    .flip-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-mid);
       background: var(--white);
-      padding: 5px 10px;
-      border-radius: 100px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 4px;
       border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      flex-shrink: 0;
     }
 
-    .card-tagline {
+    .flip-back-btn:hover {
+      background: var(--text);
+      color: var(--white);
+    }
+
+    .card-back-scroll {
+      overflow: hidden;
+      flex: 1;
+      padding: 16px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .back-tagline {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-mid);
       line-height: 1.45;
     }
 
-    .card-description {
-      font-size: 14px;
+    .back-description {
+      font-size: 13px;
       font-weight: 300;
       line-height: 1.8;
       color: var(--text-mid);
     }
 
-    .card-highlight {
+    .back-highlight {
       background: var(--white);
-      border-radius: 10px;
-      padding: 16px 18px;
+      border-radius: 8px;
+      padding: 14px 16px;
       border-left: 3px solid var(--lime);
     }
 
-    .card-highlight-label {
+    .back-highlight-label {
       font-size: 9px;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
-    .card-highlight-text {
-      font-size: 13px;
+    .back-highlight-text {
+      font-size: 12px;
       line-height: 1.55;
       color: var(--text);
     }
 
-    .card-footer {
+    .back-meta {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
-      padding-top: 20px;
+      gap: 12px 20px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
-      margin-top: auto;
     }
 
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px 24px;
-    }
+    .back-meta-item { display: flex; flex-direction: column; gap: 2px; }
 
-    .card-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .card-meta-label {
+    .back-meta-label {
       font-size: 9px;
       font-weight: 500;
       letter-spacing: 0.14em;
@@ -358,12 +499,12 @@
       color: var(--text-muted);
     }
 
-    .card-meta-value {
-      font-size: 13px;
+    .back-meta-value {
+      font-size: 12px;
       color: var(--text-mid);
     }
 
-    .card-link {
+    .back-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -374,53 +515,45 @@
       padding: 9px 16px;
       border-radius: 100px;
       border: 1.5px solid var(--border);
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
-      white-space: nowrap;
-      flex-shrink: 0;
+      transition: background 0.18s, border-color 0.18s;
+      align-self: flex-start;
     }
 
-    .card-link:hover {
+    .back-link:hover {
       background: var(--lime);
       border-color: var(--lime);
-      color: var(--text);
     }
 
-    .card-link-stealth {
+    .back-stealth {
       font-size: 12px;
       font-style: italic;
       color: var(--text-muted);
-      flex-shrink: 0;
     }
 
     /* ── Footer ────────────────────────────────────────────────── */
     .footer {
-      margin-top: 48px;
-      padding: 40px;
-      border-top: 1px solid var(--border);
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 16px;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .footer-brand {
+    .footer-logo {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       font-family: var(--font-serif);
       font-size: 17px;
-      font-weight: 400;
+      font-weight: 700;
       color: var(--text);
+      letter-spacing: -0.01em;
     }
 
-    .footer-copy {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
 
     .footer-link {
       font-size: 12px;
@@ -430,24 +563,28 @@
     }
     .footer-link:hover { color: var(--text); }
 
-    /* ── Responsive ────────────────────────────────────────────── */
-    @media (min-width: 860px) {
-      .companies-grid { grid-template-columns: 1fr 1fr; }
-    }
-
+    /* ── Mobile ────────────────────────────────────────────────── */
     @media (max-width: 640px) {
-      .nav { padding: 0 20px; }
-      .nav-tag { display: none; }
+      .nav { padding: 0 16px; }
+      .nav-label { display: none; }
+      .nav-ext { display: none; }
 
-      .hero { padding: 48px 20px 56px; }
+      .hero { padding: 40px 16px 48px; }
 
-      .section { padding: 0 20px; }
-      .section-header { padding: 48px 0 28px; }
+      .hero-pills { gap: 8px; }
+      .hero-pill { padding: 14px 16px; min-width: 72px; }
+      .hero-pill-n { font-size: 30px; }
 
-      .card { padding: 28px 20px; }
-      .card-footer { flex-direction: column; align-items: flex-start; }
+      .section { padding: 0 16px; }
+      .section-header { padding: 40px 0 24px; gap: 10px; }
 
-      .footer { padding: 32px 20px; }
+      .cards-grid { gap: 12px; padding: 20px 0 40px; }
+
+      .card-wrap { height: 600px; }
+
+      .card-back-scroll { padding: 16px 14px 20px; }
+
+      .footer { padding: 32px 16px; }
     }
   </style>
 </head>
@@ -456,17 +593,17 @@
   <!-- Nav -->
   <nav class="nav">
     <a href="https://www.project-a.vc" class="nav-logo" target="_blank" rel="noopener">
-      Project <span class="nav-logo-box">A</span>
+      Project <span class="logo-a-box">A</span>
     </a>
     <div class="nav-right">
       <span class="nav-label">European Resilience</span>
-      <a href="https://www.project-a.vc" class="nav-link" target="_blank" rel="noopener">project-a.vc ↗</a>
+      <a href="https://www.project-a.vc" class="nav-ext" target="_blank" rel="noopener">project-a.vc ↗</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <div style="border-bottom: 1px solid var(--border);">
-    <header class="hero">
+  <div class="hero-wrap">
+    <div class="hero">
       <p class="hero-eyebrow">Project A · European Resilience</p>
       <h1 class="hero-title">European<br><em>Resilience</em></h1>
       <div class="hero-bottom">
@@ -477,35 +614,36 @@
         </p>
         <div class="hero-pills">
           <div class="hero-pill">
-            <span class="hero-pill-number" id="stat-companies">16</span>
-            <span class="hero-pill-label">Companies</span>
+            <span class="hero-pill-n" id="stat-companies">16</span>
+            <span class="hero-pill-l">Companies</span>
           </div>
-          <div class="hero-pill" style="background: var(--lime);">
-            <span class="hero-pill-number">3</span>
-            <span class="hero-pill-label">Themes</span>
+          <div class="hero-pill accent">
+            <span class="hero-pill-n">3</span>
+            <span class="hero-pill-l">Themes</span>
           </div>
         </div>
       </div>
-    </header>
+    </div>
   </div>
 
-  <!-- Portfolio sections -->
+  <!-- Portfolio -->
   <main id="portfolio"></main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <span class="footer-brand">
-      Project <span class="nav-logo-box">A</span>
-    </span>
-    <span class="footer-copy">Resilience Portfolio 2025</span>
-    <a href="https://www.project-a.vc" class="footer-link" target="_blank" rel="noopener">project-a.vc ↗</a>
+  <footer style="border-top: 1px solid var(--border);">
+    <div class="footer">
+      <span class="footer-logo">Project <span class="logo-a-box">A</span></span>
+      <span class="footer-copy">Resilience Portfolio 2025</span>
+      <a href="https://www.project-a.vc" class="footer-link" target="_blank" rel="noopener">project-a.vc ↗</a>
+    </div>
   </footer>
 
   <script>
     // ─────────────────────────────────────────────────────────────────────────
     // COMPANY DATA
-    // To add a company: append an object to the relevant section's `companies`
-    // array. The page re-renders automatically from this data.
+    // Add companies by appending objects to the relevant section's array.
+    // All fields: name, tagline, description, founded, hq, headcount,
+    //             industry, team[], highlight, website (null = stealth), image
     // ─────────────────────────────────────────────────────────────────────────
 
     const sections = [
@@ -516,140 +654,129 @@
           {
             name: "Quantum Systems",
             tagline: "Europe's leading multi-domain autonomy company",
-            description: "Quantum Systems develops autonomous aerial and multi-domain systems, combining cutting-edge hardware with in-house AI and mission software delivering real-time intelligence, surveillance, and security solutions for defence and civil operators worldwide. From its roots in unmanned aerial systems, the company has evolved into a global autonomy leader, expanding into land and sea domains.",
-            founded: "2015",
-            hq: "Munich, Germany",
-            headcount: "790",
+            description: "Quantum Systems develops autonomous aerial and multi-domain systems, combining cutting-edge hardware with in-house AI and mission software delivering real-time intelligence, surveillance, and security solutions for defence and civil operators worldwide. From unmanned aerial systems, the company has expanded into land and sea domains.",
+            founded: "2015", hq: "Munich, Germany", headcount: "790",
             industry: "Aerospace & Robotics",
             team: ["Florian Seibel", "Sven Kruck"],
             highlight: "Products deployed in over 20 countries. Trusted partner to NATO and allied defence programs.",
-            website: "https://quantum-systems.com/"
+            website: "https://quantum-systems.com/",
+            image: "images/quantum_systems_cover.jpeg"
           },
           {
             name: "ARX Robotics",
             tagline: "Autonomous ground systems for mission-critical operations",
-            description: "ARX Robotics develops modular, scalable unmanned ground vehicles (UGVs) and an open autonomy platform enabling armed forces to automate logistics, reconnaissance, and tactical operations. Designed and built in Europe, its systems combine industrial-grade robustness with battlefield readiness, helping militaries operate faster and with fewer personnel at risk.",
-            founded: "2021",
-            hq: "Munich, Germany",
-            headcount: "~100",
-            industry: "Defence / Autonomous Robotics",
+            description: "ARX Robotics develops modular, scalable unmanned ground vehicles (UGVs) and an open autonomy platform enabling armed forces to automate logistics, reconnaissance, and tactical operations. Designed and built in Europe for battlefield readiness.",
+            founded: "2021", hq: "Munich, Germany", headcount: "~100",
+            industry: "Defence / Robotics",
             team: ["Marc Wietfeld", "Stefan Röbel", "Maximilian Wied"],
             highlight: "Deployed the largest Western-designed UGV fleet in Ukraine.",
-            website: "https://www.arx-robotics.com/"
+            website: "https://www.arx-robotics.com/",
+            image: "images/Arx_Robotics_Cover.png"
           },
           {
             name: "Stark",
             tagline: "Delivering unmanned systems at scale for Europe & NATO",
-            description: "STARK builds modular, software-defined unmanned systems designed for modern conflict, developed in close collaboration with NATO allied forces. Their flagship systems include the OWE-V ‘Virtus’ VTOL loitering munition and the Minerva mission-control & AI-software platform, engineered for mass-deployable integrated unmanned operations.",
-            founded: "2024",
-            hq: "Berlin, Germany",
-            headcount: "~300",
+            description: "STARK builds modular, software-defined unmanned systems designed for modern conflict, developed in close collaboration with NATO allied forces. Their flagship systems include the OWE-V 'Virtus' VTOL loitering munition and the Minerva mission-control & AI-software platform.",
+            founded: "2024", hq: "Berlin, Germany", headcount: "~300",
             industry: "Defence / Unmanned Systems",
             team: ["Uwe Horstmann", "Johannes Schaback", "Philipp Kreibohm"],
             highlight: "Bridging the critical gap between advanced technology and large-scale manufacture in the European defence sector.",
-            website: "https://stark-defence.com/en"
+            website: "https://stark-defence.com/en",
+            image: "images/stark_defence_cover.jpeg"
           },
           {
             name: "Project Q",
             tagline: "Building Europe's open operating system for defence intelligence",
-            description: "Project Q is creating the digital backbone for a more connected and sovereign European defence ecosystem. Its Q-OSP platform unifies and interprets data from diverse sensors, systems, and domains — enabling militaries to build a real-time common operational picture and bridge the gap between traditional defence primes and agile European tech players.",
-            founded: "2024",
-            hq: "Munich, Germany",
-            headcount: "~25",
+            description: "Project Q is creating the digital backbone for a more connected and sovereign European defence ecosystem. Its Q-OSP platform unifies data from diverse sensors and domains — enabling militaries to build a real-time common operational picture.",
+            founded: "2024", hq: "Munich, Germany", headcount: "~25",
             industry: "Defence Software / Sensor Fusion",
             team: ["Leonhard Wessendorf", "Philipp Bartkowski"],
             highlight: "Developing Europe's first open-architecture defence data platform.",
-            website: "https://projectqai.github.io/"
+            website: "https://projectqai.github.io/",
+            image: "images/projectq_cover.png"
           },
           {
             name: "Artificial Instinct",
             tagline: "Reinventing night vision for the modern warfighter",
-            description: "Artificial Instinct is developing digital, passive, low-latency night-vision systems that deliver full-colour, wide-field visibility for soldiers and autonomous platforms. Their roadmap culminates in next-generation soldier goggles acting as an on-eye computer — combining situational awareness, navigation overlays, and AI-powered vision into a single device.",
-            founded: "2025",
-            hq: "London, UK",
-            headcount: "~10",
+            description: "Artificial Instinct develops digital, passive, low-latency night-vision systems delivering full-colour, wide-field visibility for soldiers and autonomous platforms. Their roadmap culminates in next-generation soldier goggles combining situational awareness, navigation overlays, and AI-powered vision.",
+            founded: "2025", hq: "London, UK", headcount: "~10",
             industry: "Defence Hardware",
             team: ["Conrad Edwards"],
             highlight: "Building the world's first digital colour night-vision goggle with single-digit-millisecond latency.",
-            website: null
+            website: null,
+            image: "images/Artificial_Instinct_cover.png"
           },
           {
             name: "Labrys",
             tagline: "Securing global teams in the toughest environments",
-            description: "Labrys Technologies builds Axiom, a command-and-control platform for organisations managing distributed teams in high-risk or disconnected regions. Born from real-world fieldwork in defence and humanitarian operations, Axiom brings together secure multilingual communication, geo-tracking, and crypto-based payments into one auditable operational environment.",
-            founded: "2023",
-            hq: "London, UK",
-            headcount: "~40",
+            description: "Labrys Technologies builds Axiom, a command-and-control platform for organisations managing distributed teams in high-risk or disconnected regions. Axiom brings together secure multilingual communication, geo-tracking, and crypto-based payments into one auditable operational environment.",
+            founded: "2023", hq: "London, UK", headcount: "~40",
             industry: "Defence Software / Coordination",
             team: ["August Lersten", "Luke Wattam"],
             highlight: "Platform used by UK MoD, NATO partners, and humanitarian organisations operating in Ukraine and other crisis zones.",
-            website: "https://www.labrys.tech/"
+            website: "https://www.labrys.tech/",
+            image: "images/Labrys_cover.png"
           },
           {
             name: "Scipio",
             tagline: "Resilient logistics for modern defence",
-            description: "Scipio develops intelligent software to optimise inventory and supply chains for European armed forces — enabling route recalculation, inventory visibility, and cross-border interoperability. Built for dual-use deployment, Scipio sits as the next-generation logistics layer between legacy ERP systems and command operations, offering flexibility legacy tools cannot match.",
-            founded: "2024",
-            hq: "Berlin, Germany",
-            headcount: "~10",
+            description: "Scipio develops intelligent software to optimise inventory and supply chains for European armed forces — enabling route recalculation, inventory visibility, and cross-border interoperability. Next-generation logistics layer between legacy ERP systems and command operations.",
+            founded: "2024", hq: "Berlin, Germany", headcount: "~10",
             industry: "Defence Software / Supply Chain",
             team: ["Philipp Enzinger"],
             highlight: "Building Europe's first defence-grade logistics intelligence platform.",
-            website: "https://www.scipio.network/"
+            website: "https://www.scipio.network/",
+            image: "images/Scipio_cover.png"
           },
           {
             name: "Lysk",
             tagline: "Sovereign AI infrastructure for defence and security",
-            description: "Lysk is building a compute-first platform enabling defence and security agencies to run AI workloads inside air-gapped or classified networks. Their radio-to-text product turns battlefield radio traffic into real-time structured intelligence, sitting atop a scalable compute orchestration layer — the foundation for a secure 'AWS-Gov-for-Europe' platform.",
-            founded: "2025",
-            hq: "Paris, France",
-            headcount: "~10",
+            description: "Lysk is building a compute-first platform enabling defence and security agencies to run AI workloads inside air-gapped or classified networks. Their radio-to-text product turns battlefield radio traffic into real-time structured intelligence, sitting atop a scalable sovereign compute layer.",
+            founded: "2025", hq: "Paris, France", headcount: "~10",
             industry: "Defence Software / AI Infrastructure",
             team: ["Henry Heinemann", "Florent Oges", "Marek Majkowski"],
             highlight: "Building Europe's sovereign AI compute layer for classified and air-gapped environments.",
-            website: "https://lysk.ai/"
+            website: "https://lysk.ai/",
+            image: "images/Lysk_cover.png"
           }
         ]
       },
       {
         number: "02",
-        title: "Manufacturing",
+        title: "Industrial Technologies",
         companies: [
           {
             name: "Micropsi Industries",
             tagline: "AI-powered vision and control for industrial robots",
-            description: "Micropsi Industries develops advanced AI software that gives robots human-like adaptability on the factory floor. Its flagship product MIRAI enables robots to handle high-variance, dynamic tasks using real-time sensor data and computer vision — reacting intelligently to changing conditions without reprogramming. By combining reinforcement learning with visual perception, Micropsi bridges rigid traditional automation and truly flexible production.",
-            founded: "2014",
-            hq: "Berlin, Germany",
-            headcount: "~40",
+            description: "Micropsi Industries develops AI software that gives robots human-like adaptability on the factory floor. Its MIRAI product enables robots to handle high-variance, dynamic tasks using real-time sensor data and computer vision — without reprogramming.",
+            founded: "2014", hq: "Berlin, Germany", headcount: "~40",
             industry: "AI / Industrial Robotics",
             team: ["Ronnie Vuine", "Ulrik Deichsel"],
             highlight: "Expanding automation to complex, human-like manipulation tasks such as cable plugging, precision assembly, and quality inspection.",
-            website: "https://www.micropsi-industries.com/"
+            website: "https://www.micropsi-industries.com/",
+            image: "images/Micropsi_Industries_cover.jpg"
           },
           {
             name: "Linexa",
             tagline: "Building the automation layer for the manufacturing shop-floor",
-            description: "Linexa is building the intelligence layer for brownfield manufacturing. Its platform connects to systems across production sites regardless of vendor — capturing and structuring automation logic into one unified model. Engineers gain full transparency over what's running on the shop floor and can simulate changes before deployment, eliminating unplanned downtime and dependence on external integrators.",
-            founded: "2025",
-            hq: "Munich, Germany",
-            headcount: "5",
+            description: "Linexa is building the intelligence layer for brownfield manufacturing. Its platform connects to systems across production sites regardless of vendor, capturing automation logic into one unified model — giving engineers full transparency and the ability to simulate changes before deployment.",
+            founded: "2025", hq: "Munich, Germany", headcount: "5",
             industry: "AI / Industrial Automation",
             team: ["Alexandros Vassiliadis", "Viktor Stryczek", "Tobias Drees"],
             highlight: "Building the first cross-vendor automation platform to keep European manufacturing globally competitive.",
-            website: "https://www.linexa.io/de/"
+            website: "https://www.linexa.io/de/",
+            image: "images/Linexa_cover.png"
           },
           {
             name: "Gondor Industries",
             tagline: "Reviving stone as a material for modern construction at scale",
-            description: "Gondor Industries is reclaiming one of humanity's oldest building materials for the modern era. The company is developing precision stone-cutting, fabrication, and assembly technology that makes natural stone a viable, scalable alternative for contemporary construction — reducing the industry's reliance on energy-intensive concrete and synthetic composites. By combining advanced robotics with deep stonemasonry expertise, Gondor is making large-scale stone construction economically viable for the first time.",
-            founded: "2025",
-            hq: "London, UK",
-            headcount: "TBD",
+            description: "Gondor Industries is reclaiming one of humanity's oldest building materials for the modern era. By combining advanced robotics with deep stonemasonry expertise, the company is making large-scale stone construction economically viable — offering a durable, low-carbon alternative to concrete.",
+            founded: "2025", hq: "London, UK", headcount: "TBD",
             industry: "Manufacturing / Stonemasonry",
             team: ["Arka Serezh"],
             highlight: "Reviving the stonemasonry industry and enabling construction with stone at scale — unlocking a durable, low-carbon alternative to concrete for European infrastructure.",
-            website: "https://gondorindustries.com/"
+            website: "https://gondorindustries.com/",
+            image: "images/Gondor_cover.png"
           }
         ]
       },
@@ -660,62 +787,57 @@
           {
             name: "Black Semiconductor",
             tagline: "Re-defining chip connectivity with graphene photonics",
-            description: "Black Semiconductor is pioneering a new class of semiconductor devices by integrating graphene-based photonic interconnects directly onto electronic chips — enabling thousands of chips to communicate as one and unlocking ultra-fast data transfer, lower energy use, and greater system efficiency. The company is establishing its FabONE production facility to bring large-scale graphene-enabled chip manufacturing to Europe.",
-            founded: "2021",
-            hq: "Aachen, Germany",
-            headcount: "~95",
+            description: "Black Semiconductor pioneers graphene-based photonic interconnects directly on electronic chips — enabling thousands of chips to communicate as one with ultra-fast data transfer and lower energy use. Establishing FabONE, Europe's first graphene-photonics production facility.",
+            founded: "2021", hq: "Aachen, Germany", headcount: "~95",
             industry: "Semiconductor / Graphene Photonics",
             team: ["Dr. Daniel Schall", "Sebastian Schall", "Dr. Cedric Huyghebaert"],
             highlight: "Building Europe's first graphene-photonics chip production facility, setting new standards for computing performance in the post-Moore era.",
-            website: "https://www.blacksemi.com/"
+            website: "https://www.blacksemi.com/",
+            image: "images/black_semiconductor_cover.jpg"
           },
           {
             name: "Distil Labs",
             tagline: "Building the infrastructure for small, specialised AI models",
-            description: "Distil Labs enables organisations to create and deploy small language models optimised for specific use cases and environments. Its platform automates the full process from data preparation to deployment, allowing teams to build lightweight, private, and efficient AI systems without deep ML expertise — built for industries where reliability and data sovereignty are non-negotiable.",
-            founded: "2024",
-            hq: "Berlin, Germany",
-            headcount: "~12",
+            description: "Distil Labs enables organisations to create and deploy small language models optimised for specific use cases. Its platform automates the full process from data preparation to deployment — built for industries where reliability and data sovereignty are non-negotiable.",
+            founded: "2024", hq: "Berlin, Germany", headcount: "~12",
             industry: "AI Infrastructure / Edge Intelligence",
             team: ["Selim Nowicki", "Jacek Golebiowski"],
             highlight: "Enables AI deployment in low-connectivity or compute-limited environments where cloud-scale models cannot operate.",
-            website: "https://www.distillabs.ai/"
+            website: "https://www.distillabs.ai/",
+            image: "images/distil_labs_cover.png"
           },
           {
             name: "Hades",
             tagline: "Unlocking the Earth's deepest energy and resources",
-            description: "Hades is pioneering laser-based drilling technology to access ultra-deep geothermal energy and critical minerals previously unreachable by conventional methods. By combining industrial-grade lasers with advanced subsurface engineering, Hades is developing efficient, contact-free drilling through hard rock to depths of up to 15 km — building a vertically integrated geothermal and mining operator from the ground up.",
-            founded: "2025",
-            hq: "Munich, Germany",
-            headcount: "~10",
+            description: "Hades pioneers laser-based drilling technology to access ultra-deep geothermal energy and critical minerals previously unreachable by conventional methods — developing efficient, contact-free drilling through hard rock to depths of up to 15 km.",
+            founded: "2025", hq: "Munich, Germany", headcount: "~10",
             industry: "DeepTech / Energy & Critical Minerals",
             team: ["Dr. Max Werner", "Björn Dressler", "Dan Gengenbach"],
             highlight: "Developing the world's first industrial-scale laser-drilling system for geothermal energy and critical mineral extraction.",
-            website: "https://www.hades.com/"
+            website: "https://www.hades.com/",
+            image: "images/Hades_cover.png"
           },
           {
             name: "Vaeridion",
             tagline: "Electrifying regional aviation with the Microliner",
-            description: "Vaeridion is building the next generation of sustainable aviation with the Microliner — a fully electric aircraft engineered for regional routes and everyday air mobility. Combining advanced aerodynamics, intelligent energy management, and integrated battery-wing technology, the Microliner delivers clean, quiet flight for short-haul transport across Europe.",
-            founded: "2021",
-            hq: "Munich, Germany",
-            headcount: "65",
+            description: "Vaeridion is building the next generation of sustainable aviation with the Microliner — a fully electric aircraft engineered for regional routes. Combining advanced aerodynamics, intelligent energy management, and integrated battery-wing technology for clean, quiet flight.",
+            founded: "2021", hq: "Munich, Germany", headcount: "65",
             industry: "Aerospace / Sustainable Aviation",
             team: ["Ivor van Dartel", "Markus Kochs-Kämper"],
             highlight: "Developing Europe's first fully electric nine-seat regional aircraft.",
-            website: "https://vaeridion.com/"
+            website: "https://vaeridion.com/",
+            image: "images/vaeridion_cover.png"
           },
           {
             name: "Metycle",
             tagline: "The digital hub for global secondary metal recycling",
-            description: "Metycle operates the leading managed marketplace for international scrap and recycled metal trade, connecting collectors with recyclers and smelters globally while handling quality assurance, logistics, and payments end-to-end. Its AI-powered sorting process determines metal properties in real time, enabling precise classification and shorter trade routes — strengthening Europe's access to critical raw materials.",
-            founded: "2022",
-            hq: "Cologne, Germany",
-            headcount: "40",
+            description: "Metycle operates the leading managed marketplace for international scrap and recycled metal trade, connecting collectors with recyclers and smelters globally. Its AI-powered sorting process determines metal properties in real time, strengthening Europe's access to critical raw materials.",
+            founded: "2022", hq: "Cologne, Germany", headcount: "40",
             industry: "Marketplace / Secondary Metals",
             team: ["Ivor van Dartel", "Markus Kochs-Kämper"],
             highlight: "Building critical infrastructure for European resource sovereignty ahead of a projected 15 million tonne scrap deficit by 2030.",
-            website: "https://metycle.com/"
+            website: "https://metycle.com/",
+            image: "images/Metcycle_cover.png"
           }
         ]
       }
@@ -725,67 +847,88 @@
     // RENDERER
     // ─────────────────────────────────────────────────────────────────────────
 
-    function buildCard(company) {
-      const linkEl = company.website
-        ? `<a href="${company.website}" target="_blank" rel="noopener" class="card-link">Visit website ↗</a>`
-        : `<span class="card-link-stealth">Stealth — no public website yet</span>`;
+    function flipCard(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('flipped');
+    }
 
-      const headcountDisplay = company.headcount === 'TBD'
-        ? `<em style="color:var(--text-muted)">TBD</em>`
+    function buildCard(company, sid, cid) {
+      const id = 'card-' + sid + '-' + cid;
+
+      const linkEl = company.website
+        ? '<a href="' + company.website + '" target="_blank" rel="noopener" class="back-link" onclick="event.stopPropagation()">Visit website ↗</a>'
+        : '<span class="back-stealth">Stealth — no public website yet</span>';
+
+      const hc = company.headcount === 'TBD'
+        ? '<em style="opacity:0.5">TBD</em>'
         : company.headcount;
 
-      return `
-        <article class="card">
-          <div class="card-name-row">
-            <h3 class="card-name">${company.name}</h3>
-            <span class="card-industry">${company.industry}</span>
-          </div>
-          <p class="card-tagline">${company.tagline}</p>
-          <p class="card-description">${company.description}</p>
-          <div class="card-highlight">
-            <p class="card-highlight-label">Highlight</p>
-            <p class="card-highlight-text">${company.highlight}</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-meta">
-              <div class="card-meta-item">
-                <span class="card-meta-label">Founded</span>
-                <span class="card-meta-value">${company.founded}</span>
-              </div>
-              <div class="card-meta-item">
-                <span class="card-meta-label">HQ</span>
-                <span class="card-meta-value">${company.hq}</span>
-              </div>
-              <div class="card-meta-item">
-                <span class="card-meta-label">Team size</span>
-                <span class="card-meta-value">${headcountDisplay}</span>
-              </div>
-              <div class="card-meta-item">
-                <span class="card-meta-label">Management</span>
-                <span class="card-meta-value">${company.team.join(" · ")}</span>
-              </div>
-            </div>
-            ${linkEl}
-          </div>
-        </article>`;
+      return '<div class="card-wrap">'
+        + '<div class="card-inner" id="' + id + '">'
+
+        // FRONT
+        + '<div class="card-front" onclick="flipCard(\'' + id + '\')">'
+        + '<img class="card-front-img" src="' + company.image + '" alt="' + company.name + '" loading="lazy" />'
+        + '<div class="card-front-overlay">'
+        + '<div class="card-front-top">'
+        + '<span class="card-industry-badge">' + company.industry + '</span>'
+        + '</div>'
+        + '<div class="card-front-bottom">'
+        + '<h3 class="card-front-name">' + company.name + '</h3>'
+        + '<p class="card-front-tagline">' + company.tagline + '</p>'
+        + '<div class="card-front-hint">'
+        + '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v12M1 7l6 6 6-6"/></svg>'
+        + 'Tap to explore'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+
+        // BACK
+        + '<div class="card-back">'
+        + '<div class="card-back-header">'
+        + '<span class="card-back-name">' + company.name + '</span>'
+        + '<button class="flip-back-btn" onclick="flipCard(\'' + id + '\')">↺ Flip back</button>'
+        + '</div>'
+        + '<div class="card-back-scroll">'
+        + '<p class="back-tagline">' + company.tagline + '</p>'
+        + '<p class="back-description">' + company.description + '</p>'
+        + '<div class="back-highlight">'
+        + '<p class="back-highlight-label">Highlight</p>'
+        + '<p class="back-highlight-text">' + company.highlight + '</p>'
+        + '</div>'
+        + '<div class="back-meta">'
+        + '<div class="back-meta-item"><span class="back-meta-label">Founded</span><span class="back-meta-value">' + company.founded + '</span></div>'
+        + '<div class="back-meta-item"><span class="back-meta-label">HQ</span><span class="back-meta-value">' + company.hq + '</span></div>'
+        + '<div class="back-meta-item"><span class="back-meta-label">Team size</span><span class="back-meta-value">' + hc + '</span></div>'
+        + '<div class="back-meta-item"><span class="back-meta-label">Management</span><span class="back-meta-value">' + company.team.join(' · ') + '</span></div>'
+        + '</div>'
+        + linkEl
+        + '</div>'
+        + '</div>'
+
+        + '</div>'
+        + '</div>';
     }
 
-    function buildSection(section) {
-      const cards = section.companies.map(buildCard).join('');
-      return `
-        <div style="border-bottom: 1px solid var(--border);">
-          <section class="section">
-            <div class="section-header">
-              <span class="section-number">${section.number}</span>
-              <h2 class="section-title">${section.title}</h2>
-              <span class="section-count">${section.companies.length} companies</span>
-            </div>
-            <div class="companies-grid">${cards}</div>
-          </section>
-        </div>`;
+    function buildSection(section, sid) {
+      const cards = section.companies.map(function(c, cid) {
+        return buildCard(c, sid, cid);
+      }).join('');
+
+      return '<div class="section-wrap">'
+        + '<div class="section">'
+        + '<div class="section-header">'
+        + '<span class="section-num">' + section.number + '</span>'
+        + '<h2 class="section-title">' + section.title + '</h2>'
+        + '<span class="section-ct">' + section.companies.length + ' companies</span>'
+        + '</div>'
+        + '<div class="cards-grid">' + cards + '</div>'
+        + '</div>'
+        + '</div>';
     }
 
-    const total = sections.reduce((s, sec) => s + sec.companies.length, 0);
+    const total = sections.reduce(function(s, sec) { return s + sec.companies.length; }, 0);
     document.getElementById('stat-companies').textContent = total;
     document.getElementById('portfolio').innerHTML = sections.map(buildSection).join('');
   </script>

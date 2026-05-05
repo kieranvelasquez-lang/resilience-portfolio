@@ -6,24 +6,27 @@
   <title>European Resilience — Project A</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <style>
     /* ── Reset ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white:      #ffffff;
-      --bg:         #f7f9fa;
-      --card-bg:    #eff1f2;
-      --border:     #e5e7e9;
-      --text:       #1a1a1a;
-      --text-mid:   #5a5a5a;
-      --text-muted: #9a9a9a;
-      --lime:       #c8f135;
-      --radius:     16px;
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans:  'DM Sans', -apple-system, sans-serif;
+      --white:        #ffffff;
+      --bg:           #F7F9FA;   /* Near White */
+      --card-bg:      #EDF0F0;   /* Light Grey */
+      --border:       #D8DCDE;   /* derived divider */
+      --text:         #262626;   /* Near Black */
+      --text-mid:     #7E898E;   /* Grey */
+      --text-muted:   #A0AAAE;   /* lighter Grey, derived */
+      --lime:         #E1FF00;   /* Highlight Lemon */
+      --sky-blue:     #BED5E5;   /* Sky Blue */
+      --accent-blue:  #7EA3C8;   /* Accent Blue */
+      --near-black:   #262626;   /* Near Black (footer bg) */
+      --radius:       16px;
+      --font-serif:   'Libre Caslon Text', Georgia, serif;
+      --font-sans:    'DM Sans', -apple-system, sans-serif;
     }
 
     html {
@@ -100,14 +103,15 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 23px;
-      height: 23px;
-      border: 1.5px solid currentColor;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
+      width: 26px;
+      height: 26px;
+      border: 2px solid currentColor;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 700;
       margin-left: 2px;
       flex-shrink: 0;
+      line-height: 1;
     }
 
     .logo-wordmark.inverted {
@@ -548,7 +552,7 @@
 
     /* ── Footer ────────────────────────────────────────────────── */
     .footer-wrap {
-      background: #1a1a1a;
+      background: var(--near-black);
     }
 
     .footer {

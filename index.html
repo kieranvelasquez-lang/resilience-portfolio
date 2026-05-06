@@ -447,13 +447,7 @@
       transition: opacity 0.15s;
     }
 
-    a.card-back-name:hover {
-      color: var(--text);
-      background: var(--lime);
-      padding: 1px 5px;
-      margin: -1px -5px;
-      border-radius: 4px;
-    }
+    a.card-back-name:hover { color: var(--lime); }
 
     .card-back-hint {
       font-size: 11px;
@@ -863,7 +857,7 @@
             highlight: "Expanding automation to complex, human-like manipulation tasks such as cable plugging, precision assembly, and quality inspection.",
             website: "https://www.micropsi-industries.com/",
             image: "images/Micropsi_Industries_cover.jpg",
-            imagePosition: "75% center"
+            imagePosition: "75% 35%"
           },
           {
             name: "Linexa",
@@ -931,7 +925,7 @@
             tagline: "Unlocking the Earth's deepest energy and resources",
             description: "Hades is a deep-tech company pioneering laser-based drilling technology to access ultra-deep geothermal energy and critical minerals previously unreachable by traditional methods. By combining industrial-grade lasers with advanced subsurface engineering, Hades is developing efficient, contact-free drilling through hard rock at depths of up to 15 km.\n\nStarting in Europe, Hades is building a vertically integrated geothermal and mining operator, turning its proprietary laser-drilling technology into a platform for clean baseload power and secure mineral supply. The company's mission is to make deep-geothermal energy commercially viable everywhere.",
             founded: "2025", hq: "Munich, Germany", headcount: "~20",
-            industry: "DeepTech / Energy & Critical Minerals",
+            industry: "Energy / Mining",
             team: ["Dr. Max Werner", "Björn Dressler", "Dan Gengenbach"],
             highlight: "Developing the world's first industrial-scale laser-drilling system for geothermal energy and critical mineral extraction.",
             website: "https://www.hades.com/",
@@ -946,7 +940,8 @@
             team: ["Ivor van Dartel", "Markus Kochs-Kämper"],
             highlight: "Developing Europe's first fully electric nine-seat regional aircraft.",
             website: "https://vaeridion.com/",
-            image: "images/vaeridion_cover.png"
+            image: "images/vaeridion_cover.png",
+            imagePosition: "center 35%"
           }
         ]
       }
@@ -971,7 +966,7 @@
       const imgPos = company.imagePosition || 'center';
 
       const nameEl = company.website
-        ? '<a href="' + company.website + '" target="_blank" rel="noopener" class="card-back-name" onclick="event.stopPropagation()">' + company.name + ' ↗</a>'
+        ? '<a href="' + company.website + '" target="_blank" rel="noopener" class="card-back-name" onclick="event.stopPropagation()">' + company.name + '</a>'
         : '<span class="card-back-name">' + company.name + '</span>';
 
       return '<div class="card-wrap">'

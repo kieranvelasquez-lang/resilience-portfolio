@@ -447,7 +447,13 @@
       transition: opacity 0.15s;
     }
 
-    a.card-back-name:hover { opacity: 0.55; }
+    a.card-back-name:hover {
+      color: var(--text);
+      background: var(--lime);
+      padding: 1px 5px;
+      margin: -1px -5px;
+      border-radius: 4px;
+    }
 
     .card-back-hint {
       font-size: 11px;
@@ -460,10 +466,10 @@
     .card-back-scroll {
       overflow: hidden;
       flex: 1;
-      padding: 16px 18px 20px;
+      padding: 14px 18px 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .back-tagline {
@@ -477,14 +483,14 @@
     .back-description {
       font-size: 14px;
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.6;
       color: var(--text-mid);
     }
 
     .back-highlight {
       background: var(--white);
       border-radius: 8px;
-      padding: 14px 16px;
+      padding: 10px 12px;
       border-left: 3px solid var(--lime);
     }
 
@@ -506,8 +512,8 @@
     .back-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      padding-top: 14px;
+      gap: 8px 16px;
+      padding-top: 10px;
       border-top: 1px solid var(--border);
     }
 
@@ -857,7 +863,7 @@
             highlight: "Expanding automation to complex, human-like manipulation tasks such as cable plugging, precision assembly, and quality inspection.",
             website: "https://www.micropsi-industries.com/",
             image: "images/Micropsi_Industries_cover.jpg",
-            imagePosition: "20% center"
+            imagePosition: "75% center"
           },
           {
             name: "Linexa",

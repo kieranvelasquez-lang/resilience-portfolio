@@ -343,7 +343,7 @@
       inset: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-end;
       padding: 20px;
       background: linear-gradient(
         to bottom,
@@ -355,12 +355,10 @@
       pointer-events: none;
     }
 
-    .card-front-top {
-      display: flex;
-      justify-content: flex-end;
-    }
-
     .card-industry-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       font-size: 9px;
       font-weight: 500;
       letter-spacing: 0.12em;
@@ -906,7 +904,7 @@
       },
       {
         number: "03",
-        title: "Deep Technologies",
+        title: "Frontier Technologies",
         companies: [
           {
             name: "Black Semiconductor",
@@ -918,18 +916,6 @@
             highlight: "Building Europe's first graphene-photonics chip production facility, setting new standards for computing performance in the post-Moore era.",
             website: "https://www.blacksemi.com/",
             image: "images/black_semiconductor_cover.jpg"
-          },
-          {
-            name: "Distil Labs",
-            tagline: "Building the infrastructure for small, specialised AI models",
-            description: "Distil Labs enables organizations to create and deploy small language models (SLMs) optimized for specific use cases and environments. Its platform automates the process from data preparation to deployment, allowing teams to build lightweight, private, and efficient AI systems without deep ML expertise.\n\nDesigned for industries where reliability and data control are critical — such as defence, robotics, and finance — Distil Labs bridges the gap between cloud-scale AI and secure, on-premise intelligence.",
-            founded: "2024", hq: "Berlin, Germany", headcount: "~10",
-            industry: "AI Infrastructure / Edge Intelligence",
-            team: ["Selim Nowicki", "Jacek Golebiowski"],
-            highlight: "Enables AI deployment in low-connectivity or compute-limited environments where cloud-scale models cannot operate.",
-            website: "https://www.distillabs.ai/",
-            image: "images/distil_labs_cover.png",
-            imagePosition: "center 5%"
           },
           {
             name: "Hades",
@@ -987,9 +973,7 @@
         + '<div class="card-front">'
         + '<img class="card-front-img" src="' + company.image + '" alt="' + company.name + '" loading="lazy" style="object-position:' + imgPos + '" />'
         + '<div class="card-front-overlay">'
-        + '<div class="card-front-top">'
         + '<span class="card-industry-badge">' + company.industry + '</span>'
-        + '</div>'
         + '<div class="card-front-bottom">'
         + '<h3 class="card-front-name">' + company.name + '</h3>'
         + '<p class="card-front-tagline">' + company.tagline + '</p>'
